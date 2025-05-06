@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Übersicht aller Meldungen</h2>
+
+<div id="map"></div>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Bootstrap Modal (für Bildvorschau) -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <img id="modalImage" src="" class="img-fluid rounded" alt="Foto in groß">
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #map {
+    width: 100%;
+    height: 600px;
+    border: 2px solid #e67e22;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  .popup-img {
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .popup-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+</style>
+
+<script>
+  var map = L.map('map').setView([48.0, 8.0], 6);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  var nestIcon = L.icon({
+    iconUrl: "{{ url_for('static', filename='img/nest.png') }}",
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -28]
+  });
+
+  var hornisseIcon = L.icon({
+    iconUrl: "{{ url_for('static', filename='img/hornet.png') }}",
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -28]
+  });
+
+  var meldungen = {{ meldungen | tojson }};
+
+  meldungen.forEach(function(meldung) {
+    var popupContent = `
+      <div style="text-align:center;">
+        <strong>Typ:</strong> ${meldung.type === 'nest' ? 'Nest' : 'Hornissensichtung'}<br>
+        <strong>Bundesland:</strong> ${meldung.bundesland}<br>
+        <strong>Beschreibung:</strong> ${meldung.description || '-'}<br>
+    `;
+
+    if (meldung.photo_url) {
+      popupContent += `
+        <img src="${meldung.photo_url}"
+             alt="Foto zur Meldung"
+             class="popup-img"
+             style="width:100%; max-width:300px; margin-top:10px; border-radius:4px;"
+             onclick="showImageModal('${meldung.photo_url}')">
+      `;
+    }
+
+    popupContent += '</div>';
+
+    var icon = meldung.type === 'nest' ? nestIcon : hornisseIcon;
+
+    L.marker([meldung.latitude, meldung.longitude], { icon: icon })
+      .addTo(map)
+      .bindPopup(popupContent, { maxWidth: 350 });
+  });
+
+  // Modal-Bild anzeigen
+  function showImageModal(imageUrl) {
+    document.getElementById('modalImage').src = imageUrl;
+    const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+    modal.show();
+  }
+</script>
+{% endblock %}

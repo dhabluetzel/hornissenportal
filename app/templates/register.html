@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Registrieren - Hornissenportal{% endblock %}
+
+{% block content %}
+<h2>Registrieren</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.email.label }}<br>
+        {{ form.email(size=32) }}
+    </div>
+    <div>
+        {{ form.password.label }}<br>
+        {{ form.password(size=32) }}
+    </div>
+    <div>
+        {{ form.submit(class="btn") }}
+    </div>
+</form>
+<p>Bereits registriert? <a href="{{ url_for('main.login') }}">Hier einloggen</a>.</p>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meldung erfolgreich</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta http-equiv="refresh" content="5;url={{ url_for('main.dashboard') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>✅ Meldung erfolgreich eingereicht!</h2>
+        <p>Vielen Dank für deine Unterstützung beim Schutz der heimischen Artenvielfalt.</p>
+        <p>Du wirst in <strong>5 Sekunden</strong> automatisch zum Dashboard weitergeleitet.</p>
+
+        <div style="margin-top: 30px;">
+            <a href="{{ url_for('main.dashboard') }}" class="btn">Zurück zum Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

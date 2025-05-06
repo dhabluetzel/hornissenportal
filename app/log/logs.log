@@ -1,0 +1,92 @@
+2025-05-06 10:39:56 INFO Login-Route aufgerufen
+2025-05-06 10:40:01 INFO Login-Route aufgerufen
+2025-05-06 10:40:01 INFO Login erfolgreich für dhabluetzel@umsiedlungen.ch
+2025-05-06 10:47:05 INFO Login-Route aufgerufen
+2025-05-06 10:47:09 INFO Login-Route aufgerufen
+2025-05-06 10:47:10 INFO Login erfolgreich für info@umsiedlungen.ch
+2025-05-06 10:47:55 INFO Home-Route aufgerufen
+2025-05-06 10:47:55 INFO Login-Route aufgerufen
+2025-05-06 10:48:00 INFO Login-Route aufgerufen
+2025-05-06 10:48:00 INFO Login erfolgreich für info@umsiedlungen.ch
+2025-05-06 11:05:27 ERROR Exception on /admin/export/pdf [GET]
+Traceback (most recent call last):
+  File "/var/www/vhosts/velutina-service.ch/hornissen-portal/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/vhosts/velutina-service.ch/hornissen-portal/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/vhosts/velutina-service.ch/hornissen-portal/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/vhosts/velutina-service.ch/hornissen-portal/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/vhosts/velutina-service.ch/hornissen-portal/venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/var/www/vhosts/velutina-service.ch/hornissen-portal/app/routes.py", line 359, in export_pdf
+    pdf.output(output)
+  File "/var/www/vhosts/velutina-service.ch/hornissen-portal/venv/lib/python3.12/site-packages/fpdf/fpdf.py", line 1079, in output
+    f=open(name,'wb')
+      ^^^^^^^^^^^^^^^
+TypeError: expected str, bytes or os.PathLike object, not BytesIO
+2025-05-06 11:22:06 INFO Home-Route aufgerufen
+2025-05-06 11:22:06 INFO Login-Route aufgerufen
+2025-05-06 11:22:12 INFO Login-Route aufgerufen
+2025-05-06 11:22:12 INFO Login erfolgreich für info@umsiedlungen.ch
+2025-05-06 11:22:55 INFO Login-Route aufgerufen
+2025-05-06 11:29:03 INFO Login-Route aufgerufen
+2025-05-06 13:07:15 INFO Home-Route aufgerufen
+2025-05-06 13:07:15 INFO Login-Route aufgerufen
+2025-05-06 13:07:34 INFO Home-Route aufgerufen
+2025-05-06 13:07:34 INFO Login-Route aufgerufen
+2025-05-06 13:07:55 INFO Login-Route aufgerufen
+2025-05-06 13:07:55 WARNING Login fehlgeschlagen für david.habluetzel@phaenomena.ch
+2025-05-06 13:07:59 INFO Login-Route aufgerufen
+2025-05-06 13:08:04 INFO Home-Route aufgerufen
+2025-05-06 13:08:04 INFO Login-Route aufgerufen
+2025-05-06 13:09:15 INFO Login-Route aufgerufen
+2025-05-06 13:09:32 INFO Login-Route aufgerufen
+2025-05-06 13:09:44 INFO Login-Route aufgerufen
+2025-05-06 13:09:45 WARNING Login fehlgeschlagen für david.habluetzel@phaenomena.ch
+2025-05-06 13:10:05 INFO Login-Route aufgerufen
+2025-05-06 13:10:05 WARNING Login fehlgeschlagen für david.habluetzel@phaenomena.ch
+2025-05-06 13:10:11 INFO Login-Route aufgerufen
+2025-05-06 13:10:20 INFO Login-Route aufgerufen
+2025-05-06 13:10:20 WARNING Login fehlgeschlagen für david.habluetzel@phaenomena.ch
+2025-05-06 13:10:28 INFO Login-Route aufgerufen
+2025-05-06 13:10:33 INFO Login-Route aufgerufen
+2025-05-06 13:10:38 INFO Login-Route aufgerufen
+2025-05-06 13:10:43 INFO Login-Route aufgerufen
+2025-05-06 13:10:43 INFO Login erfolgreich für info@umsiedlungen.ch
+2025-05-06 13:14:37 INFO User david.habluetzel@phaenomena.ch wurde von Admin info@umsiedlungen.ch gelöscht.
+2025-05-06 13:14:42 INFO Login-Route aufgerufen
+2025-05-06 13:14:57 INFO Login-Route aufgerufen
+2025-05-06 13:15:28 INFO Login-Route aufgerufen
+2025-05-06 13:15:28 INFO Login erfolgreich für david.habluetzel@phaenomena.ch
+2025-05-06 13:15:35 INFO Login-Route aufgerufen
+2025-05-06 13:16:48 INFO Login-Route aufgerufen
+2025-05-06 13:17:20 INFO Login-Route aufgerufen
+2025-05-06 13:17:22 INFO Login-Route aufgerufen
+2025-05-06 13:17:35 INFO Login-Route aufgerufen
+2025-05-06 13:17:40 INFO Login-Route aufgerufen
+2025-05-06 13:17:56 INFO Login-Route aufgerufen
+2025-05-06 13:18:12 INFO Login-Route aufgerufen
+2025-05-06 13:18:15 INFO Login-Route aufgerufen
+2025-05-06 13:18:29 INFO Login-Route aufgerufen
+2025-05-06 13:18:30 INFO Login-Route aufgerufen
+2025-05-06 13:21:02 INFO Home-Route aufgerufen
+2025-05-06 13:21:02 INFO Login-Route aufgerufen
+2025-05-06 13:21:05 INFO Login-Route aufgerufen
+2025-05-06 13:21:05 INFO Login erfolgreich für david.habluetzel@phaenomena.ch
+2025-05-06 13:21:10 INFO Login-Route aufgerufen
+2025-05-06 13:21:17 INFO Login-Route aufgerufen
+2025-05-06 13:21:17 WARNING Login fehlgeschlagen für info@umsiedlungen.ch
+2025-05-06 13:21:19 INFO Login-Route aufgerufen
+2025-05-06 13:21:19 WARNING Login fehlgeschlagen für info@umsiedlungen.ch
+2025-05-06 13:21:23 INFO Login-Route aufgerufen
+2025-05-06 13:21:23 INFO Login erfolgreich für info@umsiedlungen.ch
+2025-05-06 13:21:37 INFO Benutzer david.habluetzel@phaenomena.ch gelöscht, Meldungen beibehalten.
+2025-05-06 13:33:29 INFO Home-Route aufgerufen
+2025-05-06 13:33:29 INFO Login-Route aufgerufen

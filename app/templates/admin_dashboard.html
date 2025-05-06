@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Admin-Panel - Hornissenportal{% endblock %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+<p>Hier kannst du die Hornissenmeldungen filtern und verwalten.</p>
+
+<div class="mb-3">
+  <a href="{{ url_for('main.export_excel') }}" class="btn btn-success">📥 Export als Excel</a>
+  <a href="{{ url_for('main.export_pdf') }}" class="btn btn-danger">📄 Export als PDF</a>
+</div>
+
+<form method="GET">
+    <select name="bundesland">
+        <option value="">-- Bundesland wählen --</option>
+        {% for bundesland in bundesländer %}
+            <option value="{{ bundesland }}" {% if selected_state == bundesland %}selected{% endif %}>{{ bundesland }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn">Filtern</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Typ</th>
+            <th>Bundesland</th>
+            <th>Koordinaten</th>
+            <th>Beschreibung</th>
+            <th>Foto</th>
+            <th>Erstellt von</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for report in reports %}
+        <tr>
+            <td>{{ report.id }}</td>
+            <td>{{ report.type }}</td>
+            <td>{{ report.bundesland }}</td>
+            <td>{{ report.latitude }}, {{ report.longitude }}</td>
+            <td>{{ report.description }}</td>
+            <td>
+                {% if report.photo_filename %}
+                    <a href="{{ url_for('static', filename='uploads/' ~ report.photo_filename) }}" target="_blank">Bild ansehen</a>
+                {% else %}
+                    Kein Bild
+                {% endif %}
+            </td>
+            <td>{{ report.user.email }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

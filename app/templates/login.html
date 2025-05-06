@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Login – Hornissenportal{% endblock %}
+
+{% block content %}
+  <h2>Login</h2>
+
+  <form method="POST">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.email.label }}
+      {{ form.email(class="form-control", placeholder="E-Mail-Adresse") }}
+    </div>
+
+    <div class="form-group">
+      {{ form.password.label }}
+      {{ form.password(
+          class="form-control",
+          placeholder="Passwort",
+          id="password"
+      ) }}
+    </div>
+
+    <!-- Checkbox zum Passwort anzeigen -->
+    <div class="form-check mb-3">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="showPassword"
+        onclick="togglePassword()"
+      >
+      <label class="form-check-label" for="showPassword">
+        Passwort anzeigen
+      </label>
+    </div>
+
+    <button type="submit" class="btn">Einloggen</button><b><p class="mt-3">Noch keinen Account?<p></b>
+    <a href="{{ url_for('main.register') }}" class="btn btn-outline-secondary btn-sm">Jetzt registrieren</a></p>
+</p>
+  </form>
+
+  <!-- Infobox unten -->
+  <div class="info-box mt-4">
+    <p>Dieses Modul wurde erstellt von der <strong>Imkerei Hablützel</strong>.</p>
+    <p>Besuche unsere Webseiten:
+      <a href="https://www.umsiedlungen.ch" target="_blank">umsiedlungen.ch</a> |
+      <a href="https://scan.velutina-service.ch" target="_blank">scan.velutina-service.ch</a> |
+      <a href="https://www.velutina-service.info" target="_blank">velutina-service.ch</a>|
+      <a href="https://www.lokalhelden.ch/einsatzfahrzeug-fuer-bienen-und-hornissenretter" target="_blank">Jetzt Crowdfunding Projekt unterstützen</a>
+
+    </p>
+  </div>
+
+  <!-- Script zum Umschalten der Passwort-Anzeige -->
+  <script>
+    function togglePassword() {
+      var pwd = document.getElementById("password");
+      pwd.type = (pwd.type === "password") ? "text" : "password";
+    }
+  </script>
+{% endblock %}

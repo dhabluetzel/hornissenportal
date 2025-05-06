@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Benutzerverwaltung - Hornissenportal{% endblock %}
+
+{% block content %}
+<h2>Benutzerverwaltung</h2>
+<p>Hier kannst du alle registrierten Benutzer verwalten.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>E-Mail</th>
+            <th>Admin</th>
+            <th>Aktionen</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{% if user.is_admin %}✅{% else %}❌{% endif %}</td>
+            <td>
+                {% if not user.is_admin %}
+                    <form action="{{ url_for('main.make_admin', user_id=user.id) }}" method="POST" style="display:inline;">
+                        <button class="btn btn-sm btn-success" type="submit">➕ Admin</button>
+                    </form>
+                {% else %}
+                    <form action="{{ url_for('main.remove_admin', user_id=user.id) }}" method="POST" style="display:inline;">
+                        <button class="btn btn-sm btn-warning" type="submit">➖ Admin entfernen</button>
+                    </form>
+                {% endif %}
+
+                <a href="{{ url_for('main.reset_password', user_id=user.id) }}" class="btn btn-sm btn-info">🔑 Passwort</a>
+
+                {% if not user.is_admin %}
+                    <form action="{{ url_for('main.delete_user', user_id=user.id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Diesen Benutzer wirklich löschen?');">
+                        <button class="btn btn-sm btn-danger" type="submit">🗑️ Löschen</button>
+                    </form>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

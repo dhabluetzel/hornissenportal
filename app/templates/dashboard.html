@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Hornissenportal{% endblock %}
+
+{% block content %}
+<h2>Mein Dashboard</h2>
+
+{% if reports %}
+    <table>
+        <thead>
+            <tr>
+                <th>Typ</th>
+                <th>Bundesland</th>
+                <th>Beschreibung</th>
+                <th>Aktionen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for report in reports %}
+                <tr>
+                    <td>{{ report.type }}</td>
+                    <td>{{ report.bundesland }}</td>
+                    <td>{{ report.description }}</td>
+                    <td>
+                        <a class="btn" href="{{ url_for('main.edit_report', report_id=report.id) }}">Bearbeiten</a>
+                        <form method="POST" action="{{ url_for('main.delete_report', report_id=report.id) }}" style="display:inline;">
+                            <button class="btn" type="submit" onclick="return confirm('Möchtest du diese Meldung wirklich löschen?')">Löschen</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Du hast noch keine Meldungen erstellt.</p>
+{% endif %}
+
+<!-- Infobox unten -->
+<div class="info-box">
+    <p>Dieses Modul wurde erstellt von der <strong>Imkerei Hablützel</strong>.</p>
+    <p>Besuche unsere Webseiten: 
+<a href="https://www.umsiedlungen.ch" target="_blank">umsiedlungen.ch</a> |
+      <a href="https://scan.velutina-service.ch" target="_blank">scan.velutina-service.ch</a> |
+      <a href="https://www.velutina-service.info" target="_blank">velutina-service.ch</a> |
+      <a href="https://www.lokalhelden.ch/einsatzfahrzeug-fuer-bienen-und-hornissenretter" target="_blank">Jetzt Crowdfunding Projekt unterstützen</a>
+
+    </p>
+</div>
+{% endblock %}
